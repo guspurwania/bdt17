@@ -14,15 +14,19 @@ class Calculation extends Input {
 	}
 
 	get tambah() {
-		return this.input1 + this.input2;
+		return parseFloat(this.input1) + parseFloat(this.input2);
 	}
 
 	get kurang() {
-		return this.input1 - this.input2;
+		return parseFloat(this.input1) - parseFloat(this.input2);
+	}
+
+	get bagi() {
+		return parseFloat(this.input1) / parseFloat(this.input2);
 	}
 
 	get kali() {
-		return this.input1 * this.input2;
+		return parseFloat(this.input1) * parseFloat(this.input2);
 	}
 
 	get samadengan() {
@@ -41,8 +45,22 @@ class Calculation extends Input {
 	}
 }
 
-var input = new Calculation(3,3);
-console.log(input.tambah);
-console.log(input.kurang);
-console.log(input.kali);
-console.log(input.samadengan);
+
+var input = new Calculation(process.argv[2],process.argv[4]);
+switch(process.argv[3]) {
+	case "tambah":
+		console.log(input.tambah);
+		break;
+	case "kurang":
+		console.log(input.kurang);
+		break;
+	case "kali":
+		console.log(input.kali);
+		break;
+	case "bagi":
+		console.log(input.bagi);
+		break;
+	case "cek":
+		console.log(input.samadengan);
+		break;
+}
